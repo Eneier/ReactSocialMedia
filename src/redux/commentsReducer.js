@@ -1,4 +1,4 @@
-import {COMMENT_CREATE, COMMENT_UPDATE} from "./types";
+import {COMMENT_CREATE, COMMENT_DELETE, COMMENT_UPDATE} from "./types";
 
 const initialState = {
     comments: []
@@ -27,6 +27,17 @@ export const commentsReducer = (state = initialState, action) => {
                 ...state,
                 comments: nextComments
             }
+
+        case COMMENT_DELETE:
+            return (() => {
+               const { id } = action
+                const { comments } = state
+                const newComments = comments.filter(res => res.id !== id)
+                return {
+                   ...state,
+                    comments: newComments
+                }
+            })()
 
         default:
             return state
