@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleComment from "./SingleComment";
-import {useState} from "react";
-import {commentCreate} from './redux/actions';
+import {useState, useEffect} from "react";
+import {commentCreate, commentsLoad} from './redux/actions';
 import {useDispatch, useSelector} from "react-redux";
 import uniqid from 'uniqid'
 
@@ -26,6 +26,10 @@ const Comments = (props) => {
             setTextComment('')
         }
     }
+
+    useEffect(() => {
+        dispatch(commentsLoad())
+    }, [])
 
     return (
             <div className='card-comments'>

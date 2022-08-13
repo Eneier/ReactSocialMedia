@@ -1,6 +1,5 @@
 import {connect } from 'react-redux'
 import {decrementLikes, incrementLikes} from "./redux/actions";
-import {likesReducer} from "./redux/likesReducer";
 
 function Likes(props) {
     return (
